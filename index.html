@@ -45,7 +45,7 @@ footer{background:#102b20;color:#eaf5ed;padding:35px 0}.foot{display:flex;justif
 </div></section>
 <main class="wrap">
   <div class="searchbox">
-    <div class="field"><label>Looking for</label><select id="kind"><option value="All">All pets</option><option>Cat</option><option>Dog</option></select></div>
+    <div class="field"><label>Looking for</label><select id="kind"><option value="All">All pets</option><option>Cat</option><option>Dog</option><option>Accessory</option></select></div>
     <div class="field"><label>Listing type</label><select id="type"><option value="All">Buy, sell & adopt</option><option value="Sale">For sale</option><option value="Adoption">For adoption</option></select></div>
     <div class="field"><label>Location</label><select id="location"><option value="All">All Bangladesh</option><option>Dhaka</option><option>Dinajpur</option><option>Chattogram</option><option>Rajshahi</option><option>Khulna</option><option>Sylhet</option><option>Other</option></select></div>
     <button class="btn primary" id="searchBtn">Search</button>
@@ -67,6 +67,9 @@ footer{background:#102b20;color:#eaf5ed;padding:35px 0}.foot{display:flex;justif
   <div class="field"><label>Pet name</label><input id="petName" required placeholder="e.g. Milo"></div>
   <div class="field"><label>Pet type</label><select id="petKind"><option>Cat</option><option>Dog</option></select></div>
   <div class="field"><label>Listing type</label><select id="petType"><option value="Sale">For sale</option><option value="Adoption">For adoption</option></select></div>
+  <div class="field"><label>Category</label><select id="listingCategory"><option value="Cat">Cat</option><option value="Dog">Dog</option><option value="Accessory">Pet accessory</option></select></div>
+  <div class="field" id="conditionField"><label>Product condition</label><select id="productCondition"><option value="New">New</option><option value="Used">Used</option></select></div>
+  <div class="field" id="itemStatusField"><label>Used item condition details (if applicable)</label><input id="conditionDetails" placeholder="e.g. Gently used, fully working"></div>
   <div class="field"><label>Price (BDT; enter 0 for adoption)</label><input id="petPrice" type="number" min="0" value="0" required></div>
   <div class="field"><label>District</label><input id="petLocation" required placeholder="e.g. Dinajpur"></div>
   <div class="field"><label>Contact number</label><input id="petContact" inputmode="tel" required placeholder="01XXXXXXXXX"></div>
@@ -94,9 +97,13 @@ document.querySelectorAll("[data-filter-link]").forEach(b=>b.addEventListener("c
 document.getElementById("searchBtn").onclick=()=>{activeTab="All";document.querySelectorAll("[data-tab]").forEach(x=>x.classList.toggle("active",x.dataset.tab==="All"));render()};
 document.getElementById("allBtn").onclick=()=>{document.getElementById("kind").value="All";document.getElementById("type").value="All";document.getElementById("location").value="All";activeTab="All";document.querySelectorAll("[data-tab]").forEach(x=>x.classList.toggle("active",x.dataset.tab==="All"));render()};
 const back=document.getElementById("modalBack");function openModal(type="Sale"){document.getElementById("petType").value=type;document.getElementById("modalTitle").textContent=type==="Adoption"?"List a Pet for Adoption":"Post a Pet";back.classList.add("show")}
+const categorySelect=document.getElementById("listingCategory"), petTypeSelect=document.getElementById("petType"), conditionField=document.getElementById("conditionField"), itemStatusField=document.getElementById("itemStatusField");
+function syncListingFields(){const accessory=categorySelect.value==="Accessory";petTypeSelect.disabled=accessory;if(accessory)petTypeSelect.value="Sale";conditionField.style.display=accessory?"block":"none";itemStatusField.style.display=accessory&&document.getElementById("productCondition").value==="Used"?"block":"none";}
+categorySelect.addEventListener("change",syncListingFields);document.getElementById("productCondition").addEventListener("change",syncListingFields);
+syncListingFields();
 document.getElementById("postBtn").onclick=()=>openModal();document.getElementById("adoptBtn").onclick=()=>openModal("Adoption");document.getElementById("cancelBtn").onclick=()=>back.classList.remove("show");document.getElementById("loginBtn").onclick=()=>alert("Account sign-in will be enabled after authentication setup.");
 back.addEventListener("click",e=>{if(e.target===back)back.classList.remove("show")});
-document.getElementById("petForm").addEventListener("submit",e=>{e.preventDefault();alert("Preview received in this browser only. It has NOT been published or saved. Connect a database before accepting real listings.");back.classList.remove("show")});
+document.getElementById("petForm").addEventListener("submit",e=>{e.preventDefault();const category=categorySelect.value, condition=document.getElementById("productCondition").value, details=document.getElementById("conditionDetails").value;alert(category==="Accessory"?`Accessory listing preview: ${condition}${condition==="Used"&&details?" — "+details:""}. This is only a local demo; it has NOT been published or saved.`:"Pet listing preview. This is only a local demo; it has NOT been published or saved.");back.classList.remove("show")});
 render();
 </script>
 </body></html>
