@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#176b4d">
+<title>PetBazarBangladesh — Buy, Sell & Adopt</title>
+<style>
+:root{--green:#176b4d;--mint:#e8f5ee;--ink:#18251f;--muted:#66736c;--line:#e2e9e4;--cream:#fafcf9;--orange:#f2a65a}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--cream);color:var(--ink)}
+a{color:inherit;text-decoration:none}button,input,select{font:inherit}.wrap{width:min(1120px,92%);margin:auto}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:19px;letter-spacing:-.5px}.logo{display:grid;place-items:center;width:42px;height:42px;background:var(--green);color:white;border-radius:14px;font-size:23px}
+nav{display:flex;align-items:center;gap:22px;color:#47564d;font-size:14px}.nav-actions{display:flex;gap:9px}
+.btn{border:0;border-radius:12px;padding:12px 16px;font-weight:750;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px}.primary{background:var(--green);color:white}.secondary{background:white;border:1px solid var(--line);color:var(--ink)}.small{padding:9px 12px;font-size:13px}
+.hero{padding:55px 0 36px;background:linear-gradient(120deg,#e9f6ed,#f8fbf6 65%,#fff2e4);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:35px;align-items:center}.eyebrow{color:var(--green);font-weight:800;font-size:12px;letter-spacing:1.5px;text-transform:uppercase}
+h1{font-size:clamp(36px,5vw,58px);line-height:1.04;letter-spacing:-2.3px;margin:14px 0 17px;max-width:650px}h1 span{color:var(--green)}.hero p{color:var(--muted);font-size:17px;line-height:1.7;max-width:560px}
+.hero-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:23px}.hero-art{min-height:285px;border-radius:30px;background:linear-gradient(145deg,#c9e9d5,#f8d7b6);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.pet-emoji{font-size:clamp(90px,14vw,160px);filter:drop-shadow(0 12px 10px #224b2a22)}.float{position:absolute;background:white;border:1px solid #ffffffaa;border-radius:16px;padding:12px 15px;box-shadow:0 10px 30px #12351d15;font-size:13px;font-weight:750}.float.one{left:15px;top:22px}.float.two{right:15px;bottom:20px}
+.searchbox{background:#fff;border:1px solid var(--line);border-radius:18px;padding:13px;display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:10px;box-shadow:0 12px 30px #143c2310;margin-top:28px}
+.field{display:flex;flex-direction:column;gap:5px;padding:2px 10px}.field label{font-size:11px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.6px}.field select,.field input{border:0;outline:0;background:transparent;color:var(--ink);min-width:0;padding:4px 0}
+main{padding:30px 0 65px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin:15px 0 20px}.section-head h2{font-size:27px;letter-spacing:-.8px;margin:0}.section-head p{margin:6px 0 0;color:var(--muted);font-size:14px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:25px 0 20px}.tab{padding:10px 15px;border:1px solid var(--line);border-radius:999px;background:white;font-weight:750;color:#536158;cursor:pointer}.tab.active{background:var(--green);border-color:var(--green);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff;border:1px solid var(--line);border-radius:19px;overflow:hidden;transition:transform .15s,box-shadow .15s}.card:hover{transform:translateY(-3px);box-shadow:0 14px 35px #183e2812}.photo{height:190px;display:grid;place-items:center;font-size:85px;position:relative;background:var(--mint)}.photo.dog{background:#fff0df}.photo.rescue{background:#f3eafa}.pill{position:absolute;left:13px;top:13px;background:white;border-radius:999px;padding:7px 10px;font-size:11px;font-weight:850}.heart{position:absolute;right:12px;top:12px;border:0;background:white;border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:17px}.content{padding:16px}.content h3{margin:0 0 7px;font-size:17px}.meta{font-size:12px;color:var(--muted);display:flex;gap:9px;flex-wrap:wrap}.price{font-size:19px;font-weight:850;margin:14px 0 12px}.price.free{color:var(--green)}.card-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px}.seller{font-size:12px;color:var(--muted)}.empty{padding:35px;text-align:center;border:1px dashed #b9c9be;border-radius:18px;color:var(--muted);grid-column:1/-1}
+.trust{margin-top:45px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:25px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.trust h3{font-size:15px;margin:10px 0 5px}.trust p{font-size:13px;line-height:1.6;color:var(--muted);margin:0}.trust-icon{font-size:25px}
+footer{background:#102b20;color:#eaf5ed;padding:35px 0}.foot{display:flex;justify-content:space-between;gap:20px;align-items:center}.foot p{color:#b9cfc0;font-size:13px;margin:7px 0 0}
+.modal-back{position:fixed;inset:0;background:#07160f9c;display:none;align-items:center;justify-content:center;padding:18px;z-index:20}.modal-back.show{display:flex}.modal{background:#fff;border-radius:22px;padding:24px;width:min(520px,100%);max-height:90vh;overflow:auto}.modal h2{margin-top:0}.modal .field{padding:10px 0}.modal .field input,.modal .field select{border:1px solid var(--line);border-radius:10px;padding:12px;width:100%;margin-top:4px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:15px}.note{font-size:12px;color:var(--muted);line-height:1.6}
+@media(max-width:800px){nav{display:none}.hero-grid{grid-template-columns:1fr}.hero-art{min-height:220px}.searchbox{grid-template-columns:1fr 1fr}.grid{grid-template-columns:repeat(2,1fr)}.trust{grid-template-columns:1fr}.foot{align-items:flex-start;flex-direction:column}}
+@media(max-width:520px){.nav{height:62px}.brand{font-size:16px}.logo{width:36px;height:36px}.nav-actions .secondary{display:none}.hero{padding-top:35px}h1{letter-spacing:-1.5px}.searchbox{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.photo{height:215px}.section-head{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="brand" href="#"><span class="logo">🐾</span><span>PetBazar<span style="color:var(--green)">Bangladesh</span></span></a>
+  <nav><a href="#listings" data-filter-link="All">Explore Pets</a><a href="#listings" data-filter-link="Adoption">Adoption</a><a href="#safety">Safety Tips</a></nav>
+  <div class="nav-actions"><button class="btn secondary small" id="loginBtn">Log in</button><button class="btn primary small" id="postBtn">＋ Post a Pet</button></div>
+</div></header>
+<section class="hero"><div class="wrap hero-grid">
+  <div><div class="eyebrow">A happier home starts here</div><h1>Find your new <span>best friend.</span></h1>
+    <p>Buy, sell or adopt cats and dogs across Bangladesh. Meet responsible pet owners and help more pets find loving homes.</p>
+    <div class="hero-buttons"><a class="btn primary" href="#listings">Explore Pets ↗</a><button class="btn secondary" id="adoptBtn">💚 Adopt a Pet</button></div>
+  </div>
+  <div class="hero-art"><div class="float one">🏡 Loving homes matter</div><div class="pet-emoji">🐱🐶</div><div class="float two">♡ Adopt • Don't abandon</div></div>
+</div></section>
+<main class="wrap">
+  <div class="searchbox">
+    <div class="field"><label>Looking for</label><select id="kind"><option value="All">All pets</option><option>Cat</option><option>Dog</option></select></div>
+    <div class="field"><label>Listing type</label><select id="type"><option value="All">Buy, sell & adopt</option><option value="Sale">For sale</option><option value="Adoption">For adoption</option></select></div>
+    <div class="field"><label>Location</label><select id="location"><option value="All">All Bangladesh</option><option>Dhaka</option><option>Dinajpur</option><option>Chattogram</option><option>Rajshahi</option><option>Khulna</option><option>Sylhet</option><option>Other</option></select></div>
+    <button class="btn primary" id="searchBtn">Search</button>
+  </div>
+  <section id="listings">
+    <div class="section-head"><div><h2>Pets looking for a home</h2><p>Explore sample listings — real listings will appear after backend setup.</p></div><button class="btn secondary small" id="allBtn">View all</button></div>
+    <div class="tabs"><button class="tab active" data-tab="All">All pets</button><button class="tab" data-tab="Cat">🐱 Cats</button><button class="tab" data-tab="Dog">🐶 Dogs</button><button class="tab" data-tab="Adoption">💚 Adoption</button></div>
+    <div class="grid" id="petGrid"></div>
+  </section>
+  <section class="trust" id="safety">
+    <div><div class="trust-icon">🛡️</div><h3>Safer pet connections</h3><p>Meet in a safe public place when possible. Never send an advance payment before verifying the pet and seller.</p></div>
+    <div><div class="trust-icon">💚</div><h3>Adoption with care</h3><p>Ask about health, vaccinations, age and care needs. Adoption should be responsible and pressure-free.</p></div>
+    <div><div class="trust-icon">🔎</div><h3>Report suspicious posts</h3><p>Listings should be reviewed before launch. Contact details and payment claims must be verified independently.</p></div>
+  </section>
+</main>
+<footer><div class="wrap foot"><div><a class="brand" href="#"><span class="logo">🐾</span><span>PetBazarBangladesh</span></a><p>Buy with care. Sell responsibly. Adopt with love.</p></div><div><strong>Contact</strong><p>Contact details will be added before launch.</p></div></div></footer>
+<div class="modal-back" id="modalBack"><div class="modal"><h2 id="modalTitle">Post a Pet</h2><p class="note">Prototype only: this form does not save or publish listings yet. A database and account system must be connected first.</p>
+<form id="petForm">
+  <div class="field"><label>Pet name</label><input id="petName" required placeholder="e.g. Milo"></div>
+  <div class="field"><label>Pet type</label><select id="petKind"><option>Cat</option><option>Dog</option></select></div>
+  <div class="field"><label>Listing type</label><select id="petType"><option value="Sale">For sale</option><option value="Adoption">For adoption</option></select></div>
+  <div class="field"><label>Price (BDT; enter 0 for adoption)</label><input id="petPrice" type="number" min="0" value="0" required></div>
+  <div class="field"><label>District</label><input id="petLocation" required placeholder="e.g. Dinajpur"></div>
+  <div class="field"><label>Contact number</label><input id="petContact" inputmode="tel" required placeholder="01XXXXXXXXX"></div>
+  <div class="modal-actions"><button type="button" class="btn secondary" id="cancelBtn">Cancel</button><button class="btn primary" type="submit">Preview listing</button></div>
+</form></div></div>
+<script>
+const pets=[
+{id:1,name:"Persian Kitten",kind:"Cat",type:"Sale",price:6500,location:"Dinajpur",age:"3 months",emoji:"🐱",seller:"Sample seller"},
+{id:2,name:"Friendly Indie Puppy",kind:"Dog",type:"Adoption",price:0,location:"Dhaka",age:"4 months",emoji:"🐶",seller:"Rescue volunteer"},
+{id:3,name:"Domestic Short Hair",kind:"Cat",type:"Adoption",price:0,location:"Rajshahi",age:"2 months",emoji:"🐈",seller:"Rescue volunteer"},
+{id:4,name:"Golden Retriever",kind:"Dog",type:"Sale",price:18000,location:"Chattogram",age:"5 months",emoji:"🐕",seller:"Sample seller"},
+{id:5,name:"White Persian Cat",kind:"Cat",type:"Sale",price:9000,location:"Dhaka",age:"4 months",emoji:"😺",seller:"Sample seller"},
+{id:6,name:"Rescued Puppy",kind:"Dog",type:"Adoption",price:0,location:"Dinajpur",age:"3 months",emoji:"🐕‍🦺",seller:"Rescue volunteer"}
+];
+let activeTab="All";
+const money=n=>n===0?"Free adoption":"৳"+n.toLocaleString("en-BD");
+function render(){
+ const kind=document.getElementById("kind").value, type=document.getElementById("type").value, loc=document.getElementById("location").value;
+ const shown=pets.filter(p=>(activeTab==="All"||p.kind===activeTab||p.type===activeTab)&&(kind==="All"||p.kind===kind)&&(type==="All"||p.type===type)&&(loc==="All"||p.location===loc));
+ const grid=document.getElementById("petGrid");
+ grid.innerHTML=shown.length?shown.map(p=>`<article class="card"><div class="photo ${p.kind==="Dog"?"dog":p.type==="Adoption"?"rescue":""}"><span class="pill">${p.type==="Adoption"?"💚 For adoption":"For sale"}</span><button class="heart" aria-label="Save listing" onclick="this.textContent=this.textContent==='♡'?'♥':'♡'">♡</button><span>${p.emoji}</span></div><div class="content"><h3>${p.name}</h3><div class="meta"><span>📍 ${p.location}</span><span>• ${p.age}</span><span>• ${p.kind}</span></div><div class="price ${p.price===0?"free":""}">${money(p.price)}</div><div class="card-bottom"><span class="seller">${p.seller}</span><button class="btn secondary small" onclick="alert('Demo listing only. Contact and messaging will work after the backend is connected.')">Details ↗</button></div></div></article>`).join(""):`<div class="empty">No pets match those filters. Try another search.</div>`;
+}
+document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>{activeTab=b.dataset.tab;document.querySelectorAll("[data-tab]").forEach(x=>x.classList.toggle("active",x===b));render()}));
+document.querySelectorAll("[data-filter-link]").forEach(b=>b.addEventListener("click",()=>{activeTab=b.dataset.filterLink;render()}));
+document.getElementById("searchBtn").onclick=()=>{activeTab="All";document.querySelectorAll("[data-tab]").forEach(x=>x.classList.toggle("active",x.dataset.tab==="All"));render()};
+document.getElementById("allBtn").onclick=()=>{document.getElementById("kind").value="All";document.getElementById("type").value="All";document.getElementById("location").value="All";activeTab="All";document.querySelectorAll("[data-tab]").forEach(x=>x.classList.toggle("active",x.dataset.tab==="All"));render()};
+const back=document.getElementById("modalBack");function openModal(type="Sale"){document.getElementById("petType").value=type;document.getElementById("modalTitle").textContent=type==="Adoption"?"List a Pet for Adoption":"Post a Pet";back.classList.add("show")}
+document.getElementById("postBtn").onclick=()=>openModal();document.getElementById("adoptBtn").onclick=()=>openModal("Adoption");document.getElementById("cancelBtn").onclick=()=>back.classList.remove("show");document.getElementById("loginBtn").onclick=()=>alert("Account sign-in will be enabled after authentication setup.");
+back.addEventListener("click",e=>{if(e.target===back)back.classList.remove("show")});
+document.getElementById("petForm").addEventListener("submit",e=>{e.preventDefault();alert("Preview received in this browser only. It has NOT been published or saved. Connect a database before accepting real listings.");back.classList.remove("show")});
+render();
+</script>
+</body></html>
